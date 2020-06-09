@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Angularjs Project</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container-fluid" ng-app="ngApp" ng-controller="myCtrl">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+                <a class="navbar-brand" href="#">AngularJS</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+
+                <div class="col-md-auto pt-2">
+                    <span>Tool Bar : </span>
+                </div>
+                <div class="col-md-auto">
+                    <button class="btn btn-link" title="Increase font size" ng-click="fontInc();">A+</button>
+                    <button class="btn btn-link" title="Decrease font size" ng-click="fontDec();">A-</button>
+                    <button class="btn btn-link" title="Chnage font Color" ng-click="funColor();"><i class="fas fa-palette"></i></button>
+                    <button class="btn btn-link" title="Bold" ng-click="funBold();"><i class="fas fa-bold"></i></button>
+                    <button class="btn btn-link" title="Italic" ng-click="funItalic();"><i class="fas fa-italic"></i></button>
+                    <button class="btn btn-link" title="Underline" ng-click="funUnderLine();"><i class="fas fa-underline"></i></button>
+                </div>
+
+
+            </div>
+        </div>
+
+        <section ng-style="myObj">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-auto pt-2">
+                        <span>Change Language :</span>
+                        <select name="lang" ng-options="lang.code for lang in arrlist" ng-change="getdetails()" ng-model="languageselected">
+                        </select>
+
+                        &nbsp;<i class=" text-info fas fa-info" role="button" data-toggle="popover" data-placement="right" data-content="Choose the language from dropdown list to change the content language!"></i>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12 offset-0">
+
+                        <div class="col-md-6 offset-3">
+                            <span class="h3"><u>Dummy Static Content</u></span>
+
+                            <p class="pt-3">
+                                {{ pageContent }}
+                            </p>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/anilananda/">BY ANILANANDA</a>
+
+        </section>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module('ngApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.arrlist = [{
+                "langId": 1,
+                "code": 'English',
+                "value": `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+`
+            }, {
+                "langId": 2,
+                "code": 'Hindi',
+                "value": `लोरम इप्सम केवल मुद्रण और टाइपिंग उद्योग का डमी पाठ है।
+                                      लोरम इप्सम 1500 के दशक से कभी भी उद्योग का मानक डमी पाठ रहा है,
+                                      जब एक अज्ञात प्रिंटर ने एक प्रकार की गैली ली और इसे एक प्रकार की पुस्तक बनाने के लिए तराशा।
+                                      लोरम इप्सम केवल मुद्रण और टाइपिंग उद्योग का डमी पाठ है।
+                                      लोरम इप्सम 1500 के दशक से कभी भी उद्योग का मानक डमी पाठ रहा है,
+                                      जब एक अज्ञात प्रिंटर ने एक प्रकार की गैली ली और इसे एक प्रकार की पुस्तक बनाने के लिए तराशा।
+                                      लोरम इप्सम केवल मुद्रण और टाइपिंग उद्योग का डमी पाठ है।
+                                      लोरम इप्सम 1500 के दशक से कभी भी उद्योग का मानक डमी पाठ रहा है,
+                                      जब एक अज्ञात प्रिंटर ने एक प्रकार की गैली ली और इसे एक प्रकार की पुस्तक बनाने के लिए तराशा।
+                                      लोरम इप्सम केवल मुद्रण और टाइपिंग उद्योग का डमी पाठ है।
+                                      लोरम इप्सम 1500 के दशक से कभी भी उद्योग का मानक डमी पाठ रहा है,
+                                      जब एक अज्ञात प्रिंटर ने एक प्रकार की गैली ली और इसे एक प्रकार की पुस्तक बनाने के लिए तराशा।
+`
+            }, {
+                "langId": 3,
+                "code": 'China',
+                "value": `Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。
+
+                                      Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。
+                                      Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。
+                                      Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。
+
+                                      Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。
+                                      Lorem Ipsum只是印刷和排版行業的偽文本。
+                                      自1500年代以來，Lorem Ipsum一直是業界的標準偽文本，
+                                      當一位不知名的打印機拿起一個樣板間廚房，然後將其打亂成一本樣板書。`
+            }];
+
+
+            $scope.languageselected = $scope.arrlist[0];
+            $scope.pageContent = $scope.arrlist[0].value;
+
+            $scope.getdetails = () => $scope.pageContent = $scope.arrlist[$scope.languageselected.langId - 1].value;
+
+            $scope.fontSize = 15;
+
+            $scope.myObj = {};
+
+            $scope.myObj["font-size"] = $scope.fontSize + "px";
+
+            $scope.fontInc = () => $scope.myObj["font-size"] = (++$scope.fontSize) + "px";
+
+            $scope.fontDec = () => $scope.myObj["font-size"] = (--$scope.fontSize) + "px";
+
+
+            //funBold   funUnderLine    funItalic
+
+            let isBold = false;
+            $scope.funBold = () => {
+                if (!isBold) {
+                    $scope.myObj["font-weight"] = "bold";
+                    isBold = true;
+                }
+                else {
+                    delete $scope.myObj['font-weight'];
+                    isBold = false;
+                }
+            }
+
+            let isUnderLine = false;
+            $scope.funUnderLine = () => {
+                if (!isUnderLine) {
+                    $scope.myObj["text-decoration"] = "underline";
+
+                    isUnderLine = true;
+                }
+                else {
+                    delete $scope.myObj['text-decoration'];
+                    isUnderLine = false;
+                }
+            }
+
+            let isItalic = false;
+            $scope.funItalic = () => {
+                if (!isItalic) {
+                    $scope.myObj["font-style"] = "italic";
+
+                    isItalic = true;
+                }
+                else {
+                    delete $scope.myObj['font-style'];
+                    isItalic = false;
+                }
+            }
+            //funColor
+            let isColor = false;
+            $scope.funColor = () => {
+                if (!isColor) {
+                    $scope.myObj["color"] = "#fa0089";
+                    isColor = true;
+                }
+                else {
+                    delete $scope.myObj['color'];
+                    isColor = false;
+                }
+            }
+
+        });
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+        $('.popover-dismiss').popover({
+            trigger: 'focus'
+        })
+    </script>
+</body>
+</html>
